@@ -8,6 +8,8 @@
     --button-color: #4F7B5C; /* Forest green for buttons */
     --button-hover-color: #3C6246; /* Darker green on hover */
     --border-color: black; /* High-contrast black border */
+    --switch-off-color: #ccc; /* Light grey for switch off state */
+    --switch-on-color: var(--button-color); /* Forest green for switch on state */
 }
 
 body {
@@ -22,6 +24,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     flex-direction: column; /* Ensure vertical alignment */
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 /* Container for grading screen or login */
@@ -45,6 +48,7 @@ body {
     width: 100%;
     max-width: 900px;
     margin-bottom: 20px; /* Add margin to separate from buttons */
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 /* Individual form styling */
@@ -301,4 +305,82 @@ footer {
     margin-top: 20px;
     width: 100%;
     max-width: 900px;
+}
+
+/* Hidden class for conditional fields */
+.hidden {
+    display: none;
+}
+
+/* Switch styling for IEP checkbox */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--switch-off-color);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--switch-on-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Switch labels */
+.switch-labels {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--text-color);
+    pointer-events: none;
+}
+
+.switch-label {
+    width: 50%;
+    text-align: center;
+}
+
+.switch-label-off {
+    left: 0;
+}
+
+.switch-label-on {
+    right: 0;
 }
