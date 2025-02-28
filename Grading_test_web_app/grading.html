@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css">
     
     <!-- Scripts -->
-     <!-- ✅ Ensure jsPDF is loaded -->
+    <!-- ✅ Ensure jsPDF is loaded -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="grading.js"></script>
     <script src="save.js"></script>
@@ -17,39 +17,44 @@
     <script src="version.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h2>Student Grading Application</h2>
-        <p class="app-version"></p>
+    <div class="form-container">
+        <form id="student-info-form">
+            <h3>Student Information</h3>
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" required>
+            
+            <label for="grade">Grade:</label>
+            <input type="text" id="grade" required>
+            
+            <label for="term">Term:</label>
+            <input type="text" id="term" required>
+            
+            <label for="block">Block:</label>
+            <input type="text" id="block" required>
+            
+            <label for="teacherNotes">Teacher Notes:</label>
+            <textarea id="teacherNotes" rows="4"></textarea>
+        </form>
         
-        <label>Student Name:</label>
-        <input type="text" id="studentName" required>
-        
-        <label>Grade:</label>
-        <input type="text" id="grade" required>
-        
-        <label>Term:</label>
-        <input type="text" id="term" required>
-
-        <label>Block:</label>
-        <input type="text" id="block" required>
-
-        <div id="assignments">
+        <form id="assignments-form">
             <h3>Assignments</h3>
-        </div>
-        <button type="button" onclick="addAssignment()">Add Assignment</button>
+            <div id="assignments" class="assignments-container">
+                <!-- Assignment blocks will be added here dynamically -->
+            </div>
+            <button type="button" onclick="addAssignment()">Add Assignment</button>
+            
+            <!-- ✅ Formative Assessment Section (Fixed) -->
+            <div class="formative-section">
+                <h3>Formative Assessments</h3>
+                <div id="formativeContainer"></div>
+                <button type="button" id="addFormativeAssessment" onclick="addFormativeAssessment()">
+                    ➕ Add Formative Assessment
+                </button>
+            </div>
+        </form>
+    </div>
 
-        <!-- ✅ Formative Assessment Section (Fixed) -->
-        <div class="formative-section">
-            <h3>Formative Assessments</h3>
-            <div id="formativeContainer"></div>
-            <button type="button" id="addFormativeAssessment" onclick="addFormativeAssessment()">
-                ➕ Add Formative Assessment
-            </button>
-        </div>
-
-        <h3>Teacher Notes</h3>
-        <textarea id="teacherNotes" rows="4"></textarea>
-
+    <div class="button-container">
         <button type="button" onclick="saveFormData()">Save</button>
         <button type="button" onclick="downloadFile()">Download</button>
         <button type="button" onclick="logout()">Logout</button>

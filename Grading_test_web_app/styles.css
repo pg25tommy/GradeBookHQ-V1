@@ -21,6 +21,7 @@ body {
     height: 100vh;
     padding: 20px;
     box-sizing: border-box;
+    flex-direction: column; /* Ensure vertical alignment */
 }
 
 /* Container for grading screen or login */
@@ -34,6 +35,27 @@ body {
     text-align: center;
     box-sizing: border-box;
     margin: 0;
+}
+
+/* Form container to hold both forms side by side */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px; /* Add margin to separate from buttons */
+}
+
+/* Individual form styling */
+form {
+    background: var(--primary-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
 }
 
 /* Headings and labels */
@@ -133,18 +155,16 @@ button:hover {
     color: black;
 }
 
-/* ✅ Fixed Buttons Container (Bottom Left) */
-/* ✅ Fix: Move buttons higher to prevent overlap with footer */
+/* Fixed Buttons Container (Bottom Left) */
 #fixedButtons {
     position: fixed;
-    bottom: 60px;  /* 🔹 Increased from 20px to 80px */
+    bottom: 60px;
     left: 20px;
     z-index: 1100;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-
 
 /* Style for email and ToS buttons */
 #fixedButtons a,
@@ -166,7 +186,7 @@ button:hover {
     background-color: var(--button-hover-color);
 }
 
-/* ✅ Ensure Footer is Consistent Across Pages */
+/* Ensure Footer is Consistent Across Pages */
 footer {
     position: fixed;
     bottom: 0;
@@ -180,7 +200,6 @@ footer {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
     z-index: 900;
 }
-
 
 /* Login wrapper for centering content */
 .login-wrapper {
@@ -274,3 +293,12 @@ footer {
     text-decoration: none;
 }
 
+/* Button container styling */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 900px;
+}
