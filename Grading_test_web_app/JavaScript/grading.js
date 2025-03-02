@@ -10,9 +10,9 @@ function calculateOverallGrade(assignments) {
   let totalCriteria = 0;
   
   // Loop through each assignment element
-  for (let assign of assignments) {
+  for (const assign of assignments) {
     // Get all elements with the class "gradingCriteria" within the assignment
-    let scores = assign.querySelectorAll(".gradingCriteria");
+    const scores = assign.querySelectorAll(".gradingCriteria");
     // Sum up the scores and count each criterion
     scores.forEach(score => {
       totalScore += parseInt(score.value);
@@ -30,8 +30,8 @@ function calculateOverallGrade(assignments) {
   }
   
   // Calculate average score and percentage (assuming a maximum score of 4)
-  let averageScore = totalScore / totalCriteria;
-  let percentage = (averageScore / 4) * 100;
+  const averageScore = totalScore / totalCriteria;
+  const percentage = (averageScore / 4) * 100;
   
   let ranking = "";
   let letterGrade = "";
@@ -76,7 +76,7 @@ function addFormativeAssessment() {
     <label for="formativeDescription">Description:</label>
     <textarea name="formativeDescription" rows="2" required></textarea>
     
-    <button type="button" class="remove-formative" onclick="removeFormativeAssessment(this)">Remove</button>
+    <button type="button" class="remove-formative">Remove</button>
   `;
   
   // Append the new formative assessment block to the container
@@ -92,3 +92,10 @@ function removeFormativeAssessment(button) {
   const formative = button.parentElement;
   formative.remove();
 }
+
+// Event delegation for remove buttons in formative assessments
+document.getElementById('formativeContainer').addEventListener('click', (event) => {
+  if (event.target.classList.contains('remove-formative')) {
+    removeFormativeAssessment(event.target);
+  }
+});
