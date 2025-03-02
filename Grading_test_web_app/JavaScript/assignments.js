@@ -1,56 +1,47 @@
 // assignments.js
 
+// Constants for grading criteria options
+const gradingOptions = `
+  <option value="1">Emerging</option>
+  <option value="2">Developing</option>
+  <option value="3">Proficient</option>
+  <option value="4">Extending</option>
+`;
+
+// Function to create a select element with grading criteria options
+function createGradingSelect(labelText) {
+  return `
+    <label>${labelText}:</label>
+    <select class="gradingCriteria">
+      ${gradingOptions}
+    </select>
+  `;
+}
+
 // Dynamically adds an assignment block with multiple criteria
 function addAssignment() {
-  let container = document.getElementById("assignments");
-  let div = document.createElement("div");
+  const container = document.getElementById("assignments");
+  const div = document.createElement("div");
   div.classList.add("assignment");
 
   div.innerHTML = `
     <label>Assignment Name:</label>
     <input type="text" class="assignmentName" required>
-    
-    <label>Understanding:</label>
-    <select class="gradingCriteria">
-      <option value="1">Emerging</option>
-      <option value="2">Developing</option>
-      <option value="3">Proficient</option>
-      <option value="4">Extending</option>
-    </select>
-
-    <label>Application:</label>
-    <select class="gradingCriteria">
-      <option value="1">Emerging</option>
-      <option value="2">Developing</option>
-      <option value="3">Proficient</option>
-      <option value="4">Extending</option>
-    </select>
-
-    <label>Communication:</label>
-    <select class="gradingCriteria">
-      <option value="1">Emerging</option>
-      <option value="2">Developing</option>
-      <option value="3">Proficient</option>
-      <option value="4">Extending</option>
-    </select>
-
-    <label>Critical Thinking:</label>
-    <select class="gradingCriteria">
-      <option value="1">Emerging</option>
-      <option value="2">Developing</option>
-      <option value="3">Proficient</option>
-      <option value="4">Extending</option>
-    </select>
-
+    ${createGradingSelect('Understanding')}
+    ${createGradingSelect('Application')}
+    ${createGradingSelect('Communication')}
+    ${createGradingSelect('Critical Thinking')}
     <button type="button" class="remove-assignment">Remove</button>
   `;
   container.appendChild(div);
-
-  // Remove button deletes this assignment block
-  div.querySelector(".remove-assignment").addEventListener("click", () => {
-    div.remove();
-  });
 }
+
+// Event delegation for remove buttons
+document.getElementById("assignments").addEventListener("click", (event) => {
+  if (event.target.classList.contains("remove-assignment")) {
+    event.target.closest(".assignment").remove();
+  }
+});
 
 // Dynamically adds a formative assessment textbox in the formativeContainer.
 function addFormativeAssessment() {
