@@ -3,11 +3,18 @@ require("dotenv").config({ path: require("path").join(__dirname, "..", ".env") }
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+const https = require("https");
 const { GoogleSpreadsheet } = require("google-spreadsheet");
 
 const app = express();
 const PORT = process.env.PORT || 80;
 const sessionLogPath = path.join(__dirname, "..", "Grading_test_web_app", "user_sessions.json");
+
+// PEM file configuration based on your paths
+const pemKeyPath = "C:\\mycerts\\www.gradebookhq.com-key.pem";
+const pemCertPath = "C:\\mycerts\\www.gradebookhq.com-crt.pem";
+// Optional: include the chain file if desired
+const pemCaPath = "C:\\mycerts\\www.gradebookhq.com-chain.pem";
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
@@ -32,7 +39,6 @@ const users = {
 async function initGoogleSheets() {
     try {
         const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
-        // Hard-coded credentials file name instead of using process.env value
         await doc.useServiceAccountAuth(require(path.join(__dirname, "..", "google-credentials.json")));
         await doc.loadInfo();
         console.log("✅ Google Sheets API initialized successfully.");
@@ -172,11 +178,36 @@ app.get("/users.json", (req, res) => {
 });
 
 // Set your public IP for console logging
-const PUBLIC_IP = "70.71.240.63";
+const PUBLIC_IP = "70.71.233.245";
 
-// Start the HTTP server with external access enabled
-app.listen(PORT, "0.0.0.0", () => {
-    console.log(`✅ HTTP Server running at: http://0.0.0.0:${PORT}`);
-    console.log(`🔹 Accessible Locally: http://10.0.0.228:${PORT}`);
-    console.log(`🌍 Accessible via Public IP (if configured): http://${PUBLIC_IP}:${PORT}`);
-});
+// Start HTTPS server if PEM files exist; otherwise, fall back to HTTP
+if (fs.existsSync(pemKeyPath) && fs.existsSync(pemCertPath)) {
+    console.log(`🔍 PEM files found at: ${pemKeyPath} and ${pemCertPath}`);
+    try {
+        const httpsOptions = {
+            key: fs.readFileSync(pemKeyPath),
+            cert: fs.readFileSync(pemCertPath),
+            // Optional: include CA chain if available
+            ca: fs.existsSync(pemCaPath) ? fs.readFileSync(pemCaPath) : undefined
+        };
+
+        console.log("🔑 PEM files loaded successfully!");
+        https.createServer(httpsOptions, app).listen(443, "0.0.0.0", () => {
+            console.log(`✅ HTTPS Server running at: https://0.0.0.0:443`);
+            console.log(`🌐 Accessible via Public IP (if configured): https://${PUBLIC_IP}:443`);
+        });
+    } catch (error) {
+        console.error("❌ Error loading PEM files:", error);
+        console.log("🚨 Falling back to HTTP server...");
+        app.listen(PORT, "0.0.0.0", () => {
+            console.log(`✅ HTTP Server running at: http://0.0.0.0:${PORT}`);
+            console.log(`🌍 Accessible via Public IP (if configured): http://${PUBLIC_IP}:${PORT}`);
+        });
+    }
+} else {
+    console.error("❌ PEM files not found, starting HTTP server instead.");
+    app.listen(PORT, "0.0.0.0", () => {
+        console.log(`✅ HTTP Server running at: http://0.0.0.0:${PORT}`);
+        console.log(`🌍 Accessible via Public IP (if configured): http://${PUBLIC_IP}:${PORT}`);
+    });
+}

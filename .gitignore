@@ -13,5 +13,6 @@ logs/
 # Ignore Google credentials file
 google-credentials.json
 
-
+# Ignore the notes file
+NOTES.md
 
