@@ -2,29 +2,34 @@
 
 // Display the saved assignments for the current user
 function displayHistory() {
-  let currentUser = localStorage.getItem("currentUser");
-  let history = JSON.parse(localStorage.getItem(`history_${currentUser}`)) || [];
-  let historyContainer = document.getElementById("history");
+  const currentUser = localStorage.getItem("currentUser");
+  if (!currentUser) return; // If there's no current user, do nothing
+
+  const history = JSON.parse(localStorage.getItem(`history_${currentUser}`)) || [];
+  const historyContainer = document.getElementById("history");
 
   if (!historyContainer) return; // If there's no #history element, do nothing
 
-  historyContainer.innerHTML = "<h3>Saved Assignments</h3>";
+  let historyContent = "<h3>Saved Assignments</h3>";
 
   if (history.length === 0) {
-    historyContainer.innerHTML += "<p>No saved assignments.</p>";
-    return;
+    historyContent += "<p>No saved assignments.</p>";
+  } else {
+    history.forEach(record => {
+      historyContent += `
+        <p>${record.studentName} - ${record.term} - ${record.firstAssignmentName} (${record.date})</p>
+      `;
+    });
   }
 
-  history.forEach(record => {
-    historyContainer.innerHTML += `
-      <p>${record.studentName} - ${record.term} - ${record.firstAssignmentName} (${record.date})</p>
-    `;
-  });
+  historyContainer.innerHTML = historyContent;
 }
 
 // Clears the localStorage history for current user
 function clearHistory() {
-  let currentUser = localStorage.getItem("currentUser");
+  const currentUser = localStorage.getItem("currentUser");
+  if (!currentUser) return; // If there's no current user, do nothing
+
   localStorage.removeItem(`history_${currentUser}`);
   displayHistory();
 }
