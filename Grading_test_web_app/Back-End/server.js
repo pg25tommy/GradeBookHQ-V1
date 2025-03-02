@@ -1,4 +1,4 @@
-require("dotenv").config({ path: require("path").join(__dirname, "..", ".env") });
+require("dotenv").config({ path: require("path").join(__dirname, "..", "..", ".env") });
 
 const express = require("express");
 const path = require("path");
@@ -8,7 +8,7 @@ const { GoogleSpreadsheet } = require("google-spreadsheet");
 
 const app = express();
 const PORT = process.env.PORT || 80;
-const sessionLogPath = path.join(__dirname, "..", "Grading_test_web_app", "user_sessions.json");
+const sessionLogPath = path.join(__dirname, "..", "JavaScript", "user_sessions.json");
 
 // PEM file configuration based on your paths
 const pemKeyPath = "C:\\mycerts\\www.gradebookhq.com-key.pem";
@@ -18,6 +18,10 @@ const pemCaPath = "C:\\mycerts\\www.gradebookhq.com-chain.pem";
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+
+// Serve static files from the Front-End and JavaScript directories
+app.use(express.static(path.join(__dirname, "..", "Front-End")));
+app.use('/JavaScript', express.static(path.join(__dirname, "..", "JavaScript")));
 
 // Log environment variables loaded
 console.log("🛠️  ENV Loaded:", process.env.SHEET_ID, process.env.GOOGLE_APPLICATION_CREDENTIALS);
@@ -39,7 +43,7 @@ const users = {
 async function initGoogleSheets() {
     try {
         const doc = new GoogleSpreadsheet(process.env.SHEET_ID);
-        await doc.useServiceAccountAuth(require(path.join(__dirname, "..", "google-credentials.json")));
+        await doc.useServiceAccountAuth(require(path.join(__dirname, "..", "..", "google-credentials.json")));
         await doc.loadInfo();
         console.log("✅ Google Sheets API initialized successfully.");
         return doc;
@@ -169,9 +173,6 @@ async function logSession(username, action) {
     }
 }
 
-// Serve static files from Grading_test_web_app
-app.use(express.static(path.join(__dirname, "..", "Grading_test_web_app")));
-
 // Serve users.json (if needed)
 app.get("/users.json", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "Grading_test_web_app", "users.json"));
@@ -198,16 +199,9 @@ if (fs.existsSync(pemKeyPath) && fs.existsSync(pemCertPath)) {
         });
     } catch (error) {
         console.error("❌ Error loading PEM files:", error);
-        console.log("🚨 Falling back to HTTP server...");
-        app.listen(PORT, "0.0.0.0", () => {
-            console.log(`✅ HTTP Server running at: http://0.0.0.0:${PORT}`);
-            console.log(`🌍 Accessible via Public IP (if configured): http://${PUBLIC_IP}:${PORT}`);
-        });
     }
 } else {
-    console.error("❌ PEM files not found, starting HTTP server instead.");
-    app.listen(PORT, "0.0.0.0", () => {
+    app.listen(PORT, () => {
         console.log(`✅ HTTP Server running at: http://0.0.0.0:${PORT}`);
-        console.log(`🌍 Accessible via Public IP (if configured): http://${PUBLIC_IP}:${PORT}`);
     });
 }

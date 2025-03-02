@@ -1,0 +1,386 @@
+/* Forest Green Color Palette */
+:root {
+    --background-color: #2E4A3F; /* Deep forest green */
+    --primary-color: #3F6B49; /* Medium forest green */
+    --secondary-color: #5A8C66; /* Soft muted green */
+    --accent-color: #1F3824; /* Dark green */
+    --text-color: #DCE5D7; /* Light greenish text */
+    --button-color: #4F7B5C; /* Forest green for buttons */
+    --button-hover-color: #3C6246; /* Darker green on hover */
+    --border-color: black; /* High-contrast black border */
+    --switch-off-color: #ccc; /* Light grey for switch off state */
+    --switch-on-color: var(--button-color); /* Forest green for switch on state */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-direction: column; /* Ensure vertical alignment */
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+/* Container for grading screen or login */
+.container {
+    background: var(--primary-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Form container to hold both forms side by side */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px; /* Add margin to separate from buttons */
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+/* Individual form styling */
+form {
+    background: var(--primary-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+}
+
+/* Headings and labels */
+h2, h3 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* Inputs, textareas, selects */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background: var(--secondary-color);
+    color: black;
+    border: 2px solid var(--border-color);
+}
+
+textarea::placeholder {
+    color: black;
+    font-weight: bold;
+    opacity: 1;
+}
+
+textarea {
+    resize: none;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: var(--button-color);
+    color: white;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Assignment box styling */
+.assignment {
+    background: var(--accent-color);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    color: white;
+}
+
+/* Remove assignment button styling */
+.remove-assignment {
+    background: #16321D;
+    color: white;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.remove-assignment:hover {
+    background: #0F2716;
+}
+
+/* History container styling */
+#history-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 250px;
+    background: var(--secondary-color);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+#history p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: black;
+}
+
+/* Fixed Buttons Container (Bottom Left) */
+#fixedButtons {
+    position: fixed;
+    bottom: 60px;
+    left: 20px;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Style for email and ToS buttons */
+#fixedButtons a,
+#fixedButtons button {
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--text-color);
+    background: var(--primary-color);
+    padding: 8px 12px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease;
+    width: fit-content;
+}
+
+/* Hover effect */
+#fixedButtons a:hover,
+#fixedButtons button:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Ensure Footer is Consistent Across Pages */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 900;
+}
+
+/* Login wrapper for centering content */
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 120px; /* Extra bottom margin for fixed elements */
+}
+
+/* About Box Styling */
+.about-box {
+    background: var(--primary-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.about-box h3 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.about-box p {
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Make the assignments container scrollable if it grows too tall */
+.assignments-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Formative Assessment Section styling */
+.formative-section {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px dashed var(--secondary-color);
+    border-radius: 8px;
+    background-color: rgba(90, 140, 102, 0.1);
+}
+
+/* Modal Background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1500;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    color: #000;
+}
+
+/* Close Button */
+.modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Button container styling */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Hidden class for conditional fields */
+.hidden {
+    display: none;
+}
+
+/* Switch styling for IEP checkbox */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--switch-off-color);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--switch-on-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Switch labels */
+.switch-labels {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--text-color);
+    pointer-events: none;
+}
+
+.switch-label {
+    width: 50%;
+    text-align: center;
+}
+
+.switch-label-off {
+    left: 0;
+}
+
+.switch-label-on {
+    right: 0;
+}

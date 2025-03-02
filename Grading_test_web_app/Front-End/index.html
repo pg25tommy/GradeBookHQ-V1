@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - GradeBook</title>
+ <link rel="stylesheet" href="./styles.css">
+
+  
+  <!-- Include your existing scripts -->
+  <script src="../JavaScript/version.js"></script>
+  <script src="../JavaScript/auth.js"></script>
+  <script src="../JavaScript/greeting.js"></script>
+  <script src="../JavaScript/history.js"></script>
+</head>
+<body>
+  <!-- Wrapper for centering About and Login boxes -->
+  <div class="login-wrapper">
+    <!-- About Box -->
+    <div class="about-box">
+      <h3>About GradeBook</h3>
+      <p>
+        I've known several teachers who take their work home, spending countless hours grading assignments with little to no streamlined systems in place to help. Watching them struggle with inefficient processes made me realize how much time and energy they lose—time that could be better spent on their students or their own well-being.
+      </p>
+      <p>
+        That’s when I started thinking about building this app. I wanted to create something that simplifies grading, making it faster and more organized while still aligning with the BC Canada grading scale. The goal is to provide an intuitive tool where teachers can easily input student names, track assignments across terms, and apply grading criteria efficiently—all while storing their data in a simple, accessible format.
+      </p>
+      <p>
+        Please review the Terms of Service before using this product.
+      </p>
+    </div>
+    
+    <!-- Login Container -->
+    <div class="container">
+      <h2>Login</h2>
+      <p class="app-version"></p>
+      <label>Username:</label>
+      <input type="text" id="username" placeholder="Enter your username" required>
+      <label>Password:</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+      <button type="button" onclick="login()">Login</button>
+    </div>
+  </div>
+  
+<!-- Fixed Buttons for Terms of Service and Contact -->
+<div id="fixedButtons">
+  <a href="mailto:tommy@knocktwice.ca?subject=Request%20Beta%20Access"
+     id="loginEmailIcon"
+     title="Request Beta access from the developer">
+     ✉️ Request Alpha Access
+  </a>
+  <button id="tosButton" title="View Terms of Service">Terms of Service</button>
+</div>
+
+  
+  <!-- Terms of Service Modal -->
+  <div id="tosModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Terms of Service for GradeBook</h2>
+      <p><strong>Last Updated:</strong> [Date]</p>
+      <h3>1. Scope and Purpose</h3>
+      <p><strong>About GradeBook</strong><br>
+         GradeBook provides tools for educators to manage assignments, track student performance, and generate grading reports.</p>
+      <p><strong>Applicable Privacy Laws</strong><br>
+         We strive to comply with Canadian privacy legislation, including the Personal Information Protection and Electronic Documents Act (PIPEDA) and relevant provincial laws. We commit to following best practices for the collection, use, and disclosure of personal information.</p>
+      <h3>2. Eligibility</h3>
+      <p><strong>Age Requirement</strong><br>
+         You must be the age of majority in your jurisdiction, or have obtained permission from a parent or legal guardian, to use GradeBook.</p>
+      <p><strong>Account Registration</strong><br>
+         When you create an account, you agree to provide accurate and complete information. You are responsible for maintaining the confidentiality of your account credentials.</p>
+      <h3>3. User Responsibilities</h3>
+      <p><strong>Appropriate Use</strong><br>
+         You agree to use GradeBook solely for lawful educational or administrative purposes. You shall not use the App in any manner that violates these Terms, infringes on any third-party rights, or breaches any applicable law.</p>
+      <p><strong>Accuracy of Data</strong><br>
+         You are responsible for ensuring the accuracy of the data you enter into GradeBook, including student names, assignment details, and grading information.</p>
+      <p><strong>Consent for Personal Information</strong><br>
+         You must have the necessary authority or consent to collect and input any personal information into GradeBook in accordance with Canadian privacy laws.</p>
+      <h3>4. Collection, Use, and Disclosure of Personal Information</h3>
+      <p><strong>What We Collect</strong><br>
+         - Account Data: Username and password for authentication.<br>
+         - Grading Data: Student names, assignment details, teacher notes, and performance metrics entered by you.<br>
+         - Usage Data: Information about your interactions with GradeBook, including login timestamps and usage patterns.</p>
+      <p><strong>Purpose of Collection</strong><br>
+         We collect personal information solely for the purpose of providing and improving GradeBook, including generating grading reports, storing assignment data for future reference, facilitating user authentication, and ensuring security.</p>
+      <p><strong>Disclosure</strong><br>
+         We do not sell or rent personal information. We may disclose personal information to service providers under strict confidentiality agreements or as required by law.</p>
+      <p><strong>Data Storage and Retention</strong><br>
+         Personal information may be stored locally and through third-party services (e.g., Google Sheets). We retain data only as long as necessary for the stated purposes or as required by law.</p>
+      <p><strong>User Rights</strong><br>
+         Under Canadian privacy laws, individuals have the right to access and correct their personal information. Contact us at [Your Contact Email] for any requests.</p>
+      <h3>5. Security</h3>
+      <p>We take reasonable measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no system is completely secure. You are responsible for safeguarding your account credentials.</p>
+      <h3>6. Intellectual Property</h3>
+      <p>All content provided through GradeBook is the property of GradeBook or its licensors. You may not reproduce, modify, or distribute the content without permission.</p>
+      <h3>7. Third-Party Services</h3>
+      <p>GradeBook may integrate with third-party services, whose use is subject to their own terms and privacy policies. We are not responsible for any issues arising from those services.</p>
+      <h3>8. Limitation of Liability</h3>
+      <p>To the fullest extent permitted by law, GradeBook and its operators shall not be liable for any damages arising from your use of the App.</p>
+      <h3>9. Termination</h3>
+      <p>We reserve the right to suspend or terminate your access to GradeBook at any time, without notice, if you violate these Terms or if the Services are discontinued.</p>
+      <h3>10. Changes to the Terms</h3>
+      <p>We may update these Terms from time to time. Continued use of GradeBook constitutes acceptance of the updated Terms.</p>
+      <h3>11. Contact Information</h3>
+      <p>If you have questions regarding these Terms or the handling of personal information in GradeBook, please contact us at: [Your Contact Email].</p>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <span>&copy; 2023 KnockTwice. All rights reserved.</span>
+  </footer>
+  
+  <!-- Modal JavaScript -->
+  <script>
+    // Get modal element, TOS button, and close icon
+    const modal = document.getElementById("tosModal");
+    const tosButton = document.getElementById("tosButton");
+    const closeSpan = document.querySelector(".modal .close");
+    
+    // Open modal when the TOS button is clicked
+    tosButton.onclick = function() {
+      modal.style.display = "block";
+    };
+    
+    // Close modal when the close icon is clicked
+    closeSpan.onclick = function() {
+      modal.style.display = "none";
+    };
+    
+    // Close modal when clicking outside the modal content
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>
