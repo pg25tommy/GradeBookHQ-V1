@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Student Grading App</title>
-<link rel="stylesheet" href="./styles.css">
-
+  <!-- Link to common and grading-specific styles -->
+  <link rel="stylesheet" href="Styles/common.css">
+  <link rel="stylesheet" href="Styles/grading.css">
   
   <!-- Scripts -->
-  <!-- ✅ Ensure jsPDF is loaded -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <!-- External JavaScript files -->
   <script src="../JavaScript/grading.js"></script>
   <script src="../JavaScript/save.js"></script>
   <script src="../JavaScript/auth.js"></script>
@@ -78,23 +77,24 @@
       </div>
       <button type="button" onclick="addAssignment()">Add Assignment</button>
       
-      <!-- ✅ Formative Assessment Section -->
+      <!-- Formative Assessment Section -->
       <div class="formative-section">
         <h3>Formative Assessments</h3>
         <div id="formativeContainer"></div>
-        <!-- Renamed button id to avoid conflict with the function name -->
         <button type="button" id="addFormativeAssessmentBtn" onclick="addFormativeAssessment()">
           ➕ Add Formative Assessment
         </button>
       </div>
     </form>
-  </div>
 
-  <!-- Action Buttons -->
-  <div class="button-container">
-    <button type="button" onclick="saveFormData()">Save</button>
-    <button type="button" onclick="downloadFile()">Download</button>
-    <button type="button" onclick="logout()">Logout</button>
+    <!-- Report Card Necessities Section -->
+    <form id="report-card-form">
+      <h3>Report Card Necessities</h3>
+      <div id="reportCardContainer"></div>
+      <button type="button" id="addAreaOfStrengthBtn" onclick="addAreaOfStrength()">➕ Area of Strength</button>
+      <button type="button" id="addNeedForImprovementBtn" onclick="addNeedForImprovement()">➕ Need for Improvement</button>
+      <button type="button" id="addHowToImproveBtn" onclick="addHowToImprove()">➕ How to Improve</button>
+    </form>
   </div>
 
   <!-- History Container -->
@@ -102,6 +102,12 @@
     <div id="greeting"></div>
     <button type="button" onclick="clearHistory()">Clear History</button>
     <div id="history"></div>
+      <!-- Action Buttons -->
+  <div class="button-container">
+    <button type="button" onclick="saveFormData()">Save</button>
+    <button type="button" onclick="downloadFile()">Download</button>
+    <button type="button" onclick="logout()">Logout</button>
+  </div>
   </div>
 
   <!-- Fixed Button for Email Contact -->
@@ -109,7 +115,7 @@
     <a href="mailto:tommy@knocktwice.ca?subject=GradeBook%20Support"
        id="gradingEmailButton"
        title="Contact the developer for support">
-       ✉️ Contact Developer
+       ✉️ Request a Feature / Contact Developer
     </a>
   </div>
 

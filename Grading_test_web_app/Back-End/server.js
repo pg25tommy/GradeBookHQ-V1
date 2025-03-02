@@ -36,7 +36,9 @@ const users = {
   [process.env.USER_USERNAME]: process.env.USER_PASSWORD,
   [process.env.BETA1_USERNAME]: process.env.BETA1_PASSWORD,
   [process.env.BETA2_USERNAME]: process.env.BETA2_PASSWORD,
-  [process.env.BETA3_USERNAME]: process.env.BETA3_PASSWORD
+  [process.env.BETA3_USERNAME]: process.env.BETA3_PASSWORD,
+  [process.env.FAMILY1_USERNAME]: process.env.FAMILY1_PASSWORD,
+  [process.env.FAMILY2_USERNAME]: process.env.FAMILY2_PASSWORD
 };
 
 // Initialize Google Sheets API

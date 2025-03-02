@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Login - GradeBook</title>
- <link rel="stylesheet" href="./styles.css">
-
+  <!-- Link to common and login-specific styles -->
+  <link rel="stylesheet" href="Styles/common.css">
+  <link rel="stylesheet" href="Styles/login.css">
   
-  <!-- Include your existing scripts -->
+  <!-- Include your JavaScript files as needed -->
   <script src="../JavaScript/version.js"></script>
   <script src="../JavaScript/auth.js"></script>
   <script src="../JavaScript/greeting.js"></script>
@@ -41,16 +42,15 @@
     </div>
   </div>
   
-<!-- Fixed Buttons for Terms of Service and Contact -->
-<div id="fixedButtons">
-  <a href="mailto:tommy@knocktwice.ca?subject=Request%20Beta%20Access"
-     id="loginEmailIcon"
-     title="Request Beta access from the developer">
-     ✉️ Request Alpha Access
-  </a>
-  <button id="tosButton" title="View Terms of Service">Terms of Service</button>
-</div>
-
+  <!-- Fixed Buttons for Terms of Service and Contact -->
+  <div id="fixedButtons">
+    <a href="mailto:tommy@knocktwice.ca?subject=Request%20Beta%20Access"
+       id="loginEmailIcon"
+       title="Request Beta access from the developer">
+       ✉️ Request Alpha Access
+    </a>
+    <button id="tosButton" title="View Terms of Service">Terms of Service</button>
+  </div>
   
   <!-- Terms of Service Modal -->
   <div id="tosModal" class="modal">

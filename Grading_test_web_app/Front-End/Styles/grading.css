@@ -1,0 +1,94 @@
+/* grading.css */
+.form-container {
+    display: flex;
+    flex-wrap: nowrap; /* Ensure forms are beside each other */
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+}
+
+form {
+    background: var(--primary-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Add margin to separate forms */
+}
+
+.assignment {
+    background: var(--accent-color);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    color: white;
+}
+
+.remove-assignment {
+    background: #16321D;
+    color: white;
+    margin-top: 5px;
+    width: 100%;
+}
+.remove-assignment:hover {
+    background: #0F2716;
+}
+
+#history-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 250px;
+    background: var(--secondary-color);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+#history p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: black;
+}
+
+.assignments-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.formative-section {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px dashed var(--secondary-color);
+    border-radius: 8px;
+    background-color: rgba(90, 140, 102, 0.1);
+}
+
+.report-card-section {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px dashed var(--secondary-color);
+    border-radius: 8px;
+    background-color: rgba(90, 140, 102, 0.1);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
