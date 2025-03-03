@@ -1,8 +1,8 @@
 
-<h1>Student Grading App (Draft 1)</h1>
+<h1> GradeBookHQ </h1>
 <p>
   This is a simple <strong>web application</strong> for teachers to log in, grade assignments based on multiple criteria, download
-  those grades as a text file, and keep a simple history of saved assignments in <em>localStorage</em>.
+  those grades as a PDF file, and keep a simple history of saved assignments in <em>localStorage</em>.
 </p>
 
 <hr />
@@ -13,6 +13,7 @@
   <li><strong>Multi-criteria Grading</strong>: Understanding, Application, Communication, Critical Thinking.</li>
   <li><strong>Downloads a .txt file</strong> for each student’s final grade.</li>
   <li><strong>Local History Tracking</strong> for each user, stored in the browser’s <code>localStorage</code>.</li>
+  <li><strong>Calendar Integration</strong> for tracking important dates and assignments.</li>
 </ul>
 
 <hr />
@@ -48,6 +49,12 @@
   </li>
 </ol>
 
+<h3>Calendar</h3>
+<ul>
+  <li>In <code>grading.html</code>, the calendar section allows you to track important dates and assignments.</li>
+  <li>Use the FullCalendar integration to add, edit, and view events.</li>
+</ul>
+
 <h3>History</h3>
 <ul>
   <li>The right-hand panel (or wherever <code>#history</code> is placed) shows <strong>Saved Assignments</strong> for the current user.</li>
@@ -66,8 +73,19 @@
 Student-Grading-App/
 ├─ index.html       (Login Screen)
 ├─ grading.html     (Main Grading Interface)
-├─ script.js        (JavaScript Logic)
-├─ styles.css       (CSS Styling)
+├─ JavaScript/      (JavaScript Logic)
+│  ├─ calendar.js
+│  ├─ grading.js
+│  ├─ save.js
+│  ├─ auth.js
+│  ├─ greeting.js
+│  ├─ history.js
+│  ├─ assignments.js
+│  ├─ version.js
+│  └─ toggle.js
+├─ Styles/          (CSS Styling)
+│  ├─ common.css
+│  └─ grading.css
 ├─ users.json       (Local Username/Password Store)
 </pre>
 
@@ -78,6 +96,7 @@ Student-Grading-App/
   <li><strong>Local Authentication</strong>: <code>login()</code> fetches <code>users.json</code> and checks credentials. Stores <code>authenticated</code> and <code>currentUser</code> in localStorage.</li>
   <li><strong>Guarding grading.html</strong>: If <code>authenticated</code> != <code>true</code>, user is redirected to <code>index.html</code>.</li>
   <li><strong>Grading</strong>: <code>addAssignment()</code> appends new blocks. <code>saveToFile()</code> calculates assignment averages and an overall ranking, then triggers a file download.</li>
+  <li><strong>Calendar</strong>: FullCalendar integration allows adding, editing, and viewing events within the application.</li>
   <li><strong>History</strong>: For each user, we track previous saves in <code>localStorage</code> as <code>history_username</code>. <code>displayHistory()</code> shows them. <code>clearHistory()</code> removes them.</li>
   <li><strong>Versioning</strong>: <code>appVersion</code> is displayed on pages via the <code>.app-version</code> elements.</li>
 </ul>
@@ -98,6 +117,3 @@ Student-Grading-App/
 <p>
   <strong>MIT License</strong>: You are free to use, modify, and distribute this project as needed for educational purposes.
 </p>
-
-</body>
-</html>
