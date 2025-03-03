@@ -1,5 +1,4 @@
-
-<h1> GradeBookHQ </h1>
+<h1> GradeBook HQ </h1>
 <p>
   This is a simple <strong>web application</strong> for teachers to log in, grade assignments based on multiple criteria, download
   those grades as a PDF file, and keep a simple history of saved assignments in <em>localStorage</em>.
@@ -70,23 +69,29 @@
 
 <h2>File Structure</h2>
 <pre>
-Student-Grading-App/
-├─ index.html       (Login Screen)
-├─ grading.html     (Main Grading Interface)
-├─ JavaScript/      (JavaScript Logic)
-│  ├─ calendar.js
-│  ├─ grading.js
-│  ├─ save.js
-│  ├─ auth.js
-│  ├─ greeting.js
-│  ├─ history.js
-│  ├─ assignments.js
-│  ├─ version.js
-│  └─ toggle.js
-├─ Styles/          (CSS Styling)
-│  ├─ common.css
-│  └─ grading.css
-├─ users.json       (Local Username/Password Store)
+GradeBookHQ-V1/
+├─ Grading_test_web_app/
+│  ├─ Front-End/
+│  │  ├─ index.html       (Login Screen)
+│  │  ├─ grading.html     (Main Grading Interface)
+│  │  ├─ JavaScript/      (JavaScript Logic)
+│  │  │  ├─ calendar.js
+│  │  │  ├─ grading.js
+│  │  │  ├─ save.js
+│  │  │  ├─ auth.js
+│  │  │  ├─ greeting.js
+│  │  │  ├─ history.js
+│  │  │  ├─ assignments.js
+│  │  │  ├─ version.js
+│  │  │  └─ toggle.js
+│  │  ├─ Styles/          (CSS Styling)
+│  │  │  ├─ common.css
+│  │  │  └─ grading.css
+│  │  ├─ users.json       (Local Username/Password Store)
+│  ├─ Back-End/
+│  │  ├─ server.js        (Server Logic)
+│  │  ├─ database.js      (Database Connection)
+│  │  └─ api/             (API Endpoints)
 </pre>
 
 <hr />
@@ -117,3 +122,4 @@ Student-Grading-App/
 <p>
   <strong>MIT License</strong>: You are free to use, modify, and distribute this project as needed for educational purposes.
 </p>
+
