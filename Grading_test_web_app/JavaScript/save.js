@@ -10,6 +10,9 @@ function generateFileContent() {
     const iep = document.getElementById('iep').checked;
     const iepGoals = getTrimmedValue('iepGoals');
     const iepDesignation = getTrimmedValue('iepDesignation');
+
+    const ell = document.getElementById('ell').checked;
+    const ellSupport = getTrimmedValue('ellSupport');
   
     let data = `Student Name: ${studentName}\nGrade: ${grade}\nTerm: ${term}\nBlock: ${block}\n\nAssignments:\n`;
   
@@ -57,6 +60,12 @@ function generateFileContent() {
       data += `\nIEP: Yes\nIEP Goals: ${iepGoals}\nIEP Designation: ${iepDesignation}\n`;
     } else {
       data += `\nIEP: No\n`;
+    }
+
+    if (ell) {
+      data += `\nELL: Yes\nELL Support: ${ellSupport}\n`;
+    } else {
+      data += `\nELL: No\n`;
     }
   
     const formativeTextareas = document.getElementsByClassName("formative-assessment");
@@ -182,25 +191,22 @@ function generateFileContent() {
   
   // Load form data from localStorage when the page loads
   function loadFormData() {
-    const formData = JSON.parse(localStorage.getItem('formData'));
-  
-    if (formData) {
-      document.getElementById('studentName').value = formData.studentName;
-      document.getElementById('iep').checked = formData.iep;
-      document.getElementById('iepGoals').value = formData.iepGoals;
-      document.getElementById('iepDesignation').value = formData.iepDesignation;
-      document.getElementById('grade').value = formData.grade;
-      document.getElementById('term').value = formData.term;
-      document.getElementById('block').value = formData.block;
-      document.getElementById('teacherNotes').value = formData.teacherNotes;
-  
-      toggleIEP();
-    } else {
-      document.getElementById('iep').checked = false;
-      document.getElementById('iepGoals').value = "";
-      document.getElementById('iepDesignation').value = "";
-      toggleIEP();
-    }
+    // Clear local storage
+    localStorage.removeItem('formData');
+
+    // Clear form fields
+    document.getElementById('studentName').value = '';
+    document.getElementById('iep').checked = false;
+    document.getElementById('iepGoals').value = '';
+    document.getElementById('iepDesignation').value = '';
+    document.getElementById('ell').checked = false;
+    document.getElementById('ellSupport').value = '';
+    document.getElementById('grade').value = '';
+    document.getElementById('term').value = '';
+    document.getElementById('block').value = '';
+    document.getElementById('teacherNotes').value = '';
+    toggleIEP();
+    toggleELL();
   }
   
   // Attach loadFormData to window onload event
@@ -242,4 +248,3 @@ function generateFileContent() {
     document.getElementById("addHowToImproveBtn").disabled = true;
     document.getElementById("addHowToImproveBtn").classList.add("disabled");
   }
-  

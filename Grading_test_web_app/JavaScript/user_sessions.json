@@ -164,14 +164,14 @@
   {
     "username": "Admin-Tommy",
     "loginTime": "2025-02-28T18:39:20.058Z",
-    "logoutTime": null,
-    "duration": null
+    "logoutTime": "2025-03-03T03:12:14.001Z",
+    "duration": "203574s"
   },
   {
     "username": "Admin-Tommy",
     "loginTime": "2025-02-28T19:38:16.419Z",
-    "logoutTime": null,
-    "duration": null
+    "logoutTime": "2025-03-03T04:20:42.002Z",
+    "duration": "204146s"
   },
   {
     "username": "Admin-Tommy",
@@ -344,6 +344,30 @@
   {
     "username": "Admin-Tommy",
     "loginTime": "2025-03-02T23:56:56.311Z",
+    "logoutTime": null,
+    "duration": null
+  },
+  {
+    "username": "Admin-Tommy",
+    "loginTime": "2025-03-03T03:10:43.691Z",
+    "logoutTime": null,
+    "duration": null
+  },
+  {
+    "username": "Admin-Tommy",
+    "loginTime": "2025-03-03T04:02:00.440Z",
+    "logoutTime": null,
+    "duration": null
+  },
+  {
+    "username": "BetaTester2",
+    "loginTime": "2025-03-03T04:04:14.875Z",
+    "logoutTime": null,
+    "duration": null
+  },
+  {
+    "username": "Admin-Tommy",
+    "loginTime": "2025-03-03T04:20:44.326Z",
     "logoutTime": null,
     "duration": null
   }

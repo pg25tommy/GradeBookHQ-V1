@@ -35,6 +35,15 @@
           <span class="switch-label switch-label-on">Yes</span>
         </span>
       </label>
+      <label for="ell">ELL:</label>
+      <label class="switch">
+        <input type="checkbox" id="ell" onclick="toggleELL()">
+        <span class="slider round"></span>
+        <span class="switch-labels">
+          <span class="switch-label switch-label-off">No</span>
+          <span class="switch-label switch-label-on">Yes</span>
+        </span>
+      </label>
       <div id="iepGoalsContainer" class="hidden">
         <label for="iepGoals">IEP Goals:</label>
         <textarea id="iepGoals" rows="4"></textarea>
@@ -55,7 +64,11 @@
           <option value="R">R - Moderate Behaviour Support</option>
         </select>
       </div>
-      
+      <div id="ellSupportContainer" class="hidden">
+        <label for="ellSupport">ELL Support:</label>
+        <textarea id="ellSupport" rows="4"></textarea>
+      </div>
+
       <label for="grade">Grade:</label>
       <input type="text" id="grade" required>
       
@@ -121,7 +134,7 @@
 
   <!-- Footer -->
   <footer>
-    <span>&copy; 2024 KnockTwice. All rights reserved.</span>
+    <span>&copy; 2025 KnockTwice. All rights reserved.</span>
   </footer>
 </body>
 </html>
