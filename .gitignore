@@ -14,5 +14,5 @@ logs/
 google-credentials.json
 
 # Ignore the notes file
-NOTES.md
+ NOTES.md
 

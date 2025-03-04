@@ -1,0 +1,138 @@
+/* Original color scheme */
+:root {
+  --background-color: #2E4A3F; /* Deep forest green */
+  --primary-color: #3F6B49; /* Medium forest green */
+  --secondary-color: #5A8C66; /* Soft muted green */
+  --accent-color: #1F3824; /* Dark green */
+  --text-color: #DCE5D7; /* Light greenish text */
+  --button-color: #4F7B5C; /* Forest green for buttons */
+  --button-hover-color: #3C6246; /* Darker green on hover */
+  --border-color: black; /* High-contrast black border */
+  --switch-off-color: #ccc; /* Light grey for switch off state */
+  --switch-on-color: var(--button-color); /* Forest green for switch on state */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--background-color);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glass-like screen container */
+#screen {
+  background: rgba(63, 107, 73, 0.3); /* Primary color with transparency */
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 30px;
+  width: 600px;
+  max-width: 90%;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: screenFade 0.8s forwards ease-out;
+}
+
+@keyframes screenFade {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Header styling with flicker effect (2s cycle) */
+#header {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  text-shadow: 0 0 2px var(--text-color), 0 0 10px var(--text-color);
+  animation: flickerHeader 2s infinite;
+}
+
+@keyframes flickerHeader {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 2px var(--text-color), 0 0 10px var(--text-color);
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+}
+
+/* Typewriter text styling */
+#typewriter {
+  white-space: pre-wrap;
+  color: var(--text-color);
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+/* Each letter is inline to allow natural word wrapping */
+.letter {
+  opacity: 0;
+  display: inline;
+}
+
+/* Blinking cursor styling */
+.cursor {
+  display: inline-block;
+  width: 12px;
+  height: 1em;
+  background: var(--text-color);
+  margin-left: 2px;
+  vertical-align: bottom;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ENTER button styled to match the theme with its own flicker effect (3s cycle) */
+#enterButton {
+  background: transparent;
+  border: 2px solid var(--button-color);
+  color: var(--button-color);
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  text-shadow: 0 0 2px var(--text-color), 0 0 10px var(--text-color);
+  transition: background 0.3s, color 0.3s;
+  animation: flickerButton 3s infinite;
+}
+
+@keyframes flickerButton {
+  0%, 30%, 60%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 2px var(--text-color), 0 0 10px var(--text-color);
+  }
+  15%, 45%, 75% {
+    opacity: 0.5;
+    text-shadow: none;
+  }
+}
+
+/* Pause flicker animation when hovered */
+#enterButton:hover {
+  animation-play-state: paused;
+  background: var(--button-hover-color);
+  color: var(--background-color);
+}

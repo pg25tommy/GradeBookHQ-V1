@@ -180,6 +180,16 @@ app.get("/users.json", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "Grading_test_web_app", "users.json"));
 });
 
+// Serve the landing page
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "Front-End", "landing.html"));
+});
+
+// Serve the main page
+app.get("/index.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "Front-End", "index.html"));
+});
+
 // Set your public IP for console logging
 const PUBLIC_IP = "70.71.233.245";
 

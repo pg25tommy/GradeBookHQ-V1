@@ -69,23 +69,29 @@
 
 <h2>File Structure</h2>
 <pre>
-Student-Grading-App/
-├─ index.html       (Login Screen)
-├─ grading.html     (Main Grading Interface)
-├─ JavaScript/      (JavaScript Logic)
-│  ├─ calendar.js
-│  ├─ grading.js
-│  ├─ save.js
-│  ├─ auth.js
-│  ├─ greeting.js
-│  ├─ history.js
-│  ├─ assignments.js
-│  ├─ version.js
-│  └─ toggle.js
-├─ Styles/          (CSS Styling)
-│  ├─ common.css
-│  └─ grading.css
-├─ users.json       (Local Username/Password Store)
+GradeBookHQ-V1/
+├─ Grading_test_web_app/
+│  ├─ Front-End/
+│  │  ├─ index.html       (Login Screen)
+│  │  ├─ grading.html     (Main Grading Interface)
+│  │  ├─ JavaScript/      (JavaScript Logic)
+│  │  │  ├─ calendar.js
+│  │  │  ├─ grading.js
+│  │  │  ├─ save.js
+│  │  │  ├─ auth.js
+│  │  │  ├─ greeting.js
+│  │  │  ├─ history.js
+│  │  │  ├─ assignments.js
+│  │  │  ├─ version.js
+│  │  │  └─ toggle.js
+│  │  ├─ Styles/          (CSS Styling)
+│  │  │  ├─ common.css
+│  │  │  └─ grading.css
+│  │  ├─ users.json       (Local Username/Password Store)
+│  ├─ Back-End/
+│  │  ├─ server.js        (Server Logic)
+│  │  ├─ database.js      (Database Connection)
+│  │  └─ api/             (API Endpoints)
 </pre>
 
 <hr />

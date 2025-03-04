@@ -50,13 +50,13 @@ async function logout() {
       console.log("🔹 Logout Successful:", data.message);
       localStorage.removeItem("authenticated");
       localStorage.removeItem("currentUser");
-      window.location.href = "index.html"; // Redirect to login
+      window.location.href = "login.html"; // Redirect to login
     } catch (error) {
       console.error("❌ Logout Error:", error);
     }
   } else {
     // If no user is logged in, just redirect
-    window.location.href = "index.html";
+    window.location.href = "login.html";
   }
 }
 
@@ -67,5 +67,14 @@ document.addEventListener("DOMContentLoaded", checkAuth);
 document.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     login();
+  }
+});
+
+// Add event listener for logout button
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutButton = document.getElementById("logoutButton");
+
+  if (logoutButton) {
+    logoutButton.addEventListener("click", logout);
   }
 });
